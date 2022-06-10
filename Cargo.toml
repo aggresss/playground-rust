@@ -1,5 +1,6 @@
 [workspace]
 members = [
     "workbench/file-hierarchy",
+    "workbench/macro-demo",
     "tmp"
 ]
