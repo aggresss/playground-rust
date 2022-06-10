@@ -4,5 +4,17 @@ version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+name = "tmplib"
+path = "src/lib.rs"
+
+
+[[bin]]
+name = "tmp1"
+path = "src/tmp1.rs"
+
+[[bin]]
+name = "tmp2"
+path = "src/tmp2.rs"
 
 [dependencies]
