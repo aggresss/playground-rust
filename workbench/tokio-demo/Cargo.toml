@@ -10,8 +10,9 @@ name = "tokio-demo-server"
 path = "src/server.rs"
 
 [[bin]]
-name = "tokio-demo-client"
+name = "tokio-demo-cli"
 path = "src/client.rs"
 
 [dependencies]
 tokio = { version = "1.19.2", features = ["full"] }
+mini-redis = "0.4.1"
