@@ -3,5 +3,6 @@ members = [
     "workbench/file-hierarchy",
     "workbench/macro-demo",
     "workbench/tokio-demo",
+    "workbench/closure-demo",
     "tmp"
 ]
