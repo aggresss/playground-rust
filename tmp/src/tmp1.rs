@@ -1,21 +1,7 @@
-#[derive(Debug)]
-enum Alphabet {
-    Alpha(i32, i64),
-    Beta{ index: i32, value: i64},
-}
-
 fn main() {
-    let gamma = Alphabet::Alpha(15, 16);
-    let delta = Alphabet::Beta{index:7, value:8};
+    let alpha: i32 = 6;
 
-    if let Alphabet::Alpha(a, b) = gamma {
-        println!("{}, {}", a, b);
+    while let 7 = alpha {
+        println!("admin");
     }
-
-    if let Alphabet::Beta { index: a, value: b } = delta {
-        println!("{}, {}", a, b);
-    }
-
-    println!("{:?}", gamma);
-    println!("{:?}", delta);
 }
