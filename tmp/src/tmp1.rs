@@ -1,7 +1,5 @@
 fn main() {
-    let alpha: i32 = 6;
+    let n:i64 = "67".parse().unwrap();
 
-    while let 7 = alpha {
-        println!("admin");
-    }
+    println!("{}", n);
 }
