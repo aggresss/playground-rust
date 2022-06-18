@@ -1,5 +1,27 @@
 # File Hierachy
 
+
+
+Entry | Code
+--- | ---
+📁 .cargo/ | Project-local cargo configuration, may contain config.toml.
+📁 benches/	| Benchmarks for your crate, run via cargo bench, requires nightly by default.
+📁 examples/ | Examples how to use your crate, they see your crate like external user would.
+\|- my_example.rs | Individual examples are run like cargo run --example my_example.
+📁 src/ | Actual source code for your project.
+\|- main.rs | Default entry point for applications, this is what cargo run uses.
+\|- lib.rs | Default entry point for libraries. This is where lookup for my_crate::f() starts.
+📁 src/bin/ | Place for additional binaries, even in library projects.
+\|- extra.rs | Additional binary, run with cargo run --bin extra.
+📁 tests/ | Integration tests go here, invoked via cargo test. Unit tests often stay in src/ file.
+.rustfmt.toml | In case you want to customize how cargo fmt works.
+.clippy.toml | Special configuration for certain clippy lints, utilized via cargo clippy
+build.rs | Pre-build script, useful when compiling C / FFI, ...
+Cargo.toml | Main project manifest, Defines dependencies, artifacts ...
+Cargo.lock | Dependency details for reproducible builds; add to git for apps, not for libs.
+rust-toolchain.toml | Define toolchain override (channel, components, targets) for this project.
+
+
 ## crate
 
 rust有自己的规则和约定用来组织模块，比如一个包最多可以有一个库crate，任意多个二进制crate、导入文件夹内的模块的两种约定方式... 知道这些约定，就可以快速了解rust的模块系统。
@@ -36,3 +58,5 @@ Whatever option you choose, the file must then explicitly expose files that shou
 
 - https://doc.rust-lang.org/edition-guide/rust-2018/path-changes.html
 - https://stackoverflow.com/questions/26435102/in-rust-what-is-the-purpose-of-a-mod-rs-file
+- https://cheats.rs/#project-anatomy
+
