@@ -1,8 +1,9 @@
 [workspace]
 members = [
-    "workbench/file-hierarchy",
+    "workbench/cargo-demo",
+    "workbench/closure-demo",
+    "workbench/generic-demo",
     "workbench/macro-demo",
     "workbench/tokio-demo",
-    "workbench/closure-demo",
     "tmp"
 ]

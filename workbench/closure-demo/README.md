@@ -1,5 +1,12 @@
 
 
+- Fn // 可以捕获 引用
+- FnMut // 可以捕获 可变引用
+- FnOnce // 可以捕获 移动
+
+
+- move
+
 ## Generic bounds
 
 ```rust
