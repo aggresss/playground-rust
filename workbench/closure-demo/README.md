@@ -7,17 +7,7 @@
 
 - move
 
-## Generic bounds
+使用 move 会强制闭包取得被捕获变量的所有权
+关键字 move 的作用是将所引用的变量所有权转移至闭包内，通常用于使闭包的声明周期大于所捕获的变量的原生命周期，例如将闭包返回或移至其他线程。
+发散函数不会返回，使用 ! 标记，表示一个空类型。
 
-```rust
-impl<A: TraitB + TraitC, D: TraitE + TraitF> MyTrait1<A, D> for YourType {}
-```
-
-```rust
-impl<A, D> MyTrait2<A, D> for YourType
-where
-    A: TraitB + TraitC,
-    D: TraitE + TraitF,
-{
-}
-```
