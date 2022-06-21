@@ -6,6 +6,13 @@
   <a href="https://doc.rust-lang.org/book/ch00-00-introduction.html#source-code"><img src="./images/rust_does_not_compile.svg" alt="compile" width="60"></a>
   <a href="https://doc.rust-lang.org/book/ch00-00-introduction.html#source-code"><img src="./images/rust_panics.svg" alt="panic" width="60"></a>
   <a href="https://doc.rust-lang.org/book/ch00-00-introduction.html#source-code"><img src="./images/rust_not_desired_behavior.svg" alt="behavior" width="60"></a>
+  <a href="https://rustacean.net/"><img src="./images/corro.svg" alt="corro" width="60"></a>
+  <a href="https://rustacean.net/"><img src="./images/cuddlyferris.svg" alt="cuddly" width="60"></a>
+  <a href="https://rustacean.net/"><img src="./images/owoferris.svg" alt="owoferris" width="60"></a>
+  <a href="https://rustacean.net/"><img src="./images/rustacean-flat-gesture.svg" alt="gesture" width="60"></a>
+  <a href="https://rustacean.net/"><img src="./images/rustacean-flat-happy.svg" alt="happy" width="60"></a>
+  <a href="https://rustacean.net/"><img src="./images/rustacean-flat-noshadow.svg" alt="flat-noshadow" width="60"></a>
+  <a href="https://rustacean.net/"><img src="./images/rustacean-orig-noshadow.svg" alt="orig-noshadow" width="60"></a>
 </p>
 
 <h1 align="center">
