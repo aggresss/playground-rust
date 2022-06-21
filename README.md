@@ -3,9 +3,9 @@
 # Ferris
 
 <p>
-  <a href="https://doc.rust-lang.org/book/ch00-00-introduction.html#how-to-use-this-book"><img src="./images/rust_does_not_compile.svg" alt="compile" width="60"></a>
-  <a href="https://doc.rust-lang.org/book/ch00-00-introduction.html#how-to-use-this-book"><img src="./images/rust_panics.svg" alt="panic" width="60"></a>
-  <a href="https://doc.rust-lang.org/book/ch00-00-introduction.html#how-to-use-this-book"><img src="./images/rust_not_desired_behavior.svg" alt="behavior" width="60"></a>
+  <a href="https://doc.rust-lang.org/book/ch00-00-introduction.html#source-code"><img src="./images/rust_does_not_compile.svg" alt="compile" width="60"></a>
+  <a href="https://doc.rust-lang.org/book/ch00-00-introduction.html#source-code"><img src="./images/rust_panics.svg" alt="panic" width="60"></a>
+  <a href="https://doc.rust-lang.org/book/ch00-00-introduction.html#source-code"><img src="./images/rust_not_desired_behavior.svg" alt="behavior" width="60"></a>
 </p>
 
 <h1 align="center">
