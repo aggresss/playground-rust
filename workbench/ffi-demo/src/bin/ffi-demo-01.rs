@@ -1,13 +1,13 @@
 use std::fmt;
 
-#[link(name="m")]
-extern {
+#[link(name = "m")]
+extern "C" {
     fn csqrtf(z: Complex) -> Complex;
     fn ccosf(z: Complex) -> Complex;
 }
 
 fn cos(z: Complex) -> Complex {
-    unsafe {ccosf(z)}
+    unsafe { ccosf(z) }
 }
 
 #[repr(C)]
@@ -28,8 +28,8 @@ impl fmt::Debug for Complex {
 }
 
 fn main() {
-    let z = Complex { re: -1., im: 0.};
-    let z_sqrt = unsafe { csqrtf(z)};
+    let z = Complex { re: -1., im: 0. };
+    let z_sqrt = unsafe { csqrtf(z) };
 
     println!("the square root of {:?} is {:?}", z, z_sqrt);
     println!("cos({:?}) = {:?}", z, cos(z));
