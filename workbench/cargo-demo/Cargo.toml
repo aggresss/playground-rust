@@ -2,6 +2,7 @@
 name = "cargo-demo"
 version = "0.1.0"
 edition = "2021"
+links = "z"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -9,3 +10,6 @@ edition = "2021"
 proc-macro = true
 
 [dependencies]
+
+[build-dependencies]
+pkg-config = "0.3.25"
