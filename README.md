@@ -34,6 +34,7 @@
 - [Std Docs <sup>STD</sup>](https://doc.rust-lang.org/std/index.html)
 - [Nomicon <sup>NOM</sup>](https://doc.rust-lang.org/nomicon/index.html)
 - [Reference <sup>REF</sup>](https://doc.rust-lang.org/reference/index.html)
+- [The Cargo Book](https://doc.rust-lang.org/cargo/)
 
 ---
 

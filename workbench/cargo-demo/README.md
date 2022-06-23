@@ -1,7 +1,5 @@
 # File Hierachy
 
-
-
 Entry | Code
 --- | ---
 📁 .cargo/ | Project-local cargo configuration, may contain config.toml.
@@ -20,7 +18,6 @@ build.rs | Pre-build script, useful when compiling C / FFI, ...
 Cargo.toml | Main project manifest, Defines dependencies, artifacts ...
 Cargo.lock | Dependency details for reproducible builds; add to git for apps, not for libs.
 rust-toolchain.toml | Define toolchain override (channel, components, targets) for this project.
-
 
 ## crate
 
@@ -53,6 +50,23 @@ To expose them, you need to use either of the following options:
 - a file named utils.rs (same name as the folder), at the same level as the utils folder
 
 Whatever option you choose, the file must then explicitly expose files that should be usable outside of the utils folder.
+
+
+## Build Script
+
+- https://doc.rust-lang.org/cargo/reference/build-scripts.html
+
+ Placing a file named build.rs in the root of a package will cause Cargo to compile that script and execute it just before building the package.
+
+ Just before a package is built, Cargo will compile a build script into an executable (if it has not already been built). It will then run the script, which may perform any number of tasks. The script may communicate with Cargo by printing specially formatted commands prefixed with cargo: to stdout.
+
+ - https://doc.rust-lang.org/cargo/reference/build-scripts.html#-sys-packages
+
+Some Cargo packages that link to system libraries have a naming convention of having a -sys suffix. Any package named foo-sys should provide two major pieces of functionality:
+
+- The library crate should link to the native library libfoo. This will often probe the current system for libfoo before resorting to building from source.
+- The library crate should provide declarations for types and functions in libfoo, but not higher-level abstractions.
+
 
 ## Reference
 
