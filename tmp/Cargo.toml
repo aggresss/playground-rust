@@ -18,3 +18,4 @@ name = "tmp2"
 path = "src/tmp2.rs"
 
 [dependencies]
+rand = "0.8.3"
