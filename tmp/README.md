@@ -18,3 +18,18 @@ The ability of the compiler to tell that a reference is no longer being used at 
 - Field Init Shorthand
 - Struct Update Syntax
 
+Which expresses that a value can be either something or nothing.
+
+Enums are a feature in many languages, but their capabilities differ in each language. Rust's enums are most similar to algebraic data types in functional languages, such as F#, OCaml, and Haskell.
+
+## Scratch 004
+
+In his 2009 presentation "Null Reference: The Billion Dollar Mistake", Tony Hoare, the inventor of null.
+
+## Scratch 005
+
+The compiler will look for the code inside the module in these places:
+
+- Inline, directly following mod garden, within curly brackets instead of the semicolon
+- In the file src/garden.rs
+- In the file src/garden/mod.rs
