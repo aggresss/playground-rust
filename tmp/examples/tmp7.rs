@@ -1,7 +1,13 @@
-fn main() {
-    let s1 = String::from("Hello, ");
-    let s2 = String::from("world!");
-    let s3 = s1 + &s2;
+fn f1(_s: &String) -> &str {
+    "alpha"
+}
 
-    println!("{}", s3);
+fn f2(_s: &str) -> &str {
+    "beta"
+}
+
+
+fn main() {
+    println!("{}", f1(&"f1".to_string()));
+    println!("{}", f2("f2"));
 }
