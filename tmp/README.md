@@ -33,3 +33,32 @@ The compiler will look for the code inside the module in these places:
 - Inline, directly following mod garden, within curly brackets instead of the semicolon
 - In the file src/garden.rs
 - In the file src/garden/mod.rs
+
+## Scratch 006
+
+We can also use pub to designate structs and enums as public, but there are a few extra details. If we use pub before a struct definition, we make the struct public, but the struct's fields will still be private.
+In contrast, if we make an enum public, all of its variants are then public. We only need the pub before the enum keyword.
+
+A path can take two forms:
+
+- An absolute path starts from a crate root by using a crate name(for code from an external crate) or literal `crate` (for code from the current crate)
+- A relative path starts from the current module and use `self`, `super`, or an identifier in the current module.
+
+Idiomatic path Bring the function's parent module into scope with use, but specify the full path when bringing in structs, enums, and other item.
+
+Re-exporting Names with pub use
+
+```
+use std::io;
+use std::io::Write;
+```
+
+```
+use std::io::{self, Write};
+```
+
+```
+use std::collections::*
+```
+
+This `use` statement bring all public items defined in `std::collections` into the current scope. Be careful when using the glob operator. Glob can make it harder to tell what names in scope and where a name used in your program was defined. The glob operator is often used when testing to bring everything under test into the test module.
