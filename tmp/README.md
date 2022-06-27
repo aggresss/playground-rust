@@ -62,3 +62,21 @@ use std::collections::*
 ```
 
 This `use` statement bring all public items defined in `std::collections` into the current scope. Be careful when using the glob operator. Glob can make it harder to tell what names in scope and where a name used in your program was defined. The glob operator is often used when testing to bring everything under test into the test module.
+
+## Scratch 007
+
+- String
+- string slice
+- &str
+
+Rust has only one string type in the core language, which is the string slice `str` that is usually seen in its borrowed form `&str` .
+
+`&str` is short for `&String[..]`
+
+`fn first_word(s: &String) -> &str`
+
+A more experienced Rustacean would write the signature shown because it allows us to use the same function on both `&String` values and `&str` values.
+
+`fn first_word(s: &str) -> &str`
+
+This flexibility takes advatage of deref coercion
