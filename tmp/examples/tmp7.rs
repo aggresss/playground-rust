@@ -1,14 +1,13 @@
 use std::fs::File;
-use std::io::ErrorKind;
+use std::io;
+use std::io::Read;
+
+fn read_username_frome_file() -> Result<String, io::Error> {
+    let mut s = String::new();
+    File::open("hello.txt")?.read_to_string(&mut s)?;
+    Ok(s)
+}
 
 fn main() {
-    let _f = File::open("hello.txt").unwrap_or_else(|error| {
-        if error.kind() == ErrorKind::NotFound {
-            File::create("hello.txt").unwrap_or_else(|error| {
-                panic!("{:?}", error);
-            })
-        } else {
-            panic!("{:?}", error);
-        }
-    });
+    let _ = read_username_frome_file();
 }
