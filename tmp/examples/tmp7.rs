@@ -1,13 +1,13 @@
-fn f1(_s: &String) -> &str {
-    "alpha"
-}
-
-fn f2(_s: &str) -> &str {
-    "beta"
-}
-
+use std::collections::HashMap;
 
 fn main() {
-    println!("{}", f1(&"f1".to_string()));
-    println!("{}", f2("f2"));
+    let text = "hello worl&d wonderful world";
+    let mut map = HashMap::new();
+
+    for word in text.split_whitespace() {
+        let count = map.entry(word).or_insert(0);
+        *count += 1;
+    }
+
+    println!("{:?}", map);
 }

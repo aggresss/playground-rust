@@ -71,12 +71,20 @@ This `use` statement bring all public items defined in `std::collections` into t
 
 Rust has only one string type in the core language, which is the string slice `str` that is usually seen in its borrowed form `&str` .
 
-`&str` is short for `&String[..]`
-
 `fn first_word(s: &String) -> &str`
 
 A more experienced Rustacean would write the signature shown because it allows us to use the same function on both `&String` values and `&str` values.
 
 `fn first_word(s: &str) -> &str`
 
-This flexibility takes advatage of deref coercion
+This flexibility takes advatage of deref coercion. Rust uses a `deref coercion`, which here turns `&s` into `&s[..]` .
+
+## Scratch 008
+
+many more goodies are hiding in the functions defined on HashMap<K, V> by the standard library. As always, check the standard library documentation for more information.
+
+The type annotation `HashMap<_, _>` is needed here because it's possible to collect into many different data structures and Rust does't know which you want unless you specify. For the parameters for the key and value types, however, we use underscores, and Rust can infer the types that the hash map contains based on the types of the data in the vectors.
+
+
+
+
