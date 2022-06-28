@@ -85,6 +85,23 @@ many more goodies are hiding in the functions defined on HashMap<K, V> by the st
 
 The type annotation `HashMap<_, _>` is needed here because it's possible to collect into many different data structures and Rust does't know which you want unless you specify. For the parameters for the key and value types, however, we use underscores, and Rust can infer the types that the hash map contains based on the types of the data in the vectors.
 
+## Scratch 009
 
+Propagating errors. The `?` placed after a Result value is defined to work in almost the same way as the `match` expressions we defined to handle the `Result` value. If the value of the `Result` is an `Ok`, the value inside the `Ok` will get returned from the expression, and the program will continue. If the value is an `Err`, the `Err` will be returned from the whole function as if we had used the `return` keyword so the error value gets propagated to the calling code.
 
+## Scratch 010
 
+Generics allow us to replace specific types with a placeholder that represents multiple types to remove code duplication.
+
+## Scratch 011
+
+`&[T]`slice
+
+```
+// A heap-allocated array, coerced to a slice
+let boxed_array: Box<[i32]> = Box::new([1, 2, 3]);
+```
+
+## Scratch 012
+
+`fn<T>` `impl<T>` `struct NAME<T>` `enum NAME<T>`
