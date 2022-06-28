@@ -104,4 +104,13 @@ let boxed_array: Box<[i32]> = Box::new([1, 2, 3]);
 
 ## Scratch 012
 
-`fn<T>` `impl<T>` `struct NAME<T>` `enum NAME<T>`
+`fn NAME<T>` `struct NAME<T>` `enum NAME<T>`
+`impl<T>`
+
+We can use trait bounds to specify that a generic type can be any type that has certain behavior.
+
+Use trait bounds improves performance without having to give up the flexibility of generics.
+
+The only difference is that the user must bring the trait into scope as well as the types.
+
+One restriction to note is that we can implement a trait on a type only if at leaset one of the trait or the type is local to our crate.
