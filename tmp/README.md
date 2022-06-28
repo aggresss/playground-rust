@@ -126,6 +126,10 @@ The `impl trait` syntax works for straightforward case but is actually syntax su
 - Clearer Trait Bounds with where Clauses
 
 ```
+fn some_function(t: &(impl Display + Clone), u: &(impl Clone + Debug)) -> i32 {}
+```
+
+```
 fn some_function<T: Display + Clone, U: Clone + Debug>(t: &T, u: &U) -> i32 {}
 ```
 
@@ -136,5 +140,6 @@ fn some_function<T, U>(t: &T, u: &U) -> i32
 {}
 ```
 
-
+- Trait as Parameters
+- Returning Types that implement Traits
 
