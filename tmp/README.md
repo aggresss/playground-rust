@@ -114,3 +114,27 @@ Use trait bounds improves performance without having to give up the flexibility 
 The only difference is that the user must bring the trait into scope as well as the types.
 
 One restriction to note is that we can implement a trait on a type only if at leaset one of the trait or the type is local to our crate.
+
+## Scratch 013
+
+Instead of a concrete type of the item parameter, we specify the `impl` keyword and the trait name. This parameter accepts any type that implements the specified trait.
+
+The `impl trait` syntax works for straightforward case but is actually syntax sugar for a longer form known as a trait bound.
+
+- Trait Bound Syntax
+- Specifying Multiple Trait Bounds with the + Syntax
+- Clearer Trait Bounds with where Clauses
+
+```
+fn some_function<T: Display + Clone, U: Clone + Debug>(t: &T, u: &U) -> i32 {}
+```
+
+```
+fn some_function<T, U>(t: &T, u: &U) -> i32
+    where T: Display + Clone,
+          U: Clone + Debug,
+{}
+```
+
+
+
