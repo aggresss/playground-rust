@@ -169,3 +169,17 @@ lifetime elision rule
 
 Because lifetime are a type of generic, the declarations of the lifetime parameter `'a` and the generic type parameter `T` go in the same list inside the angle brackets after the function name.
 
+## Scratch 015
+
+Some command line options go to `cargo test`, and some go to the resulting test binary. To separate these two types of arguments, you list the arguments that go to `cargo test` followed by the separator `--` and then the ones that go to the test binary.
+
+## Scratch 016
+
+Rust 有两种多态方式：
+
+- Generic // compile time, static // impl trait
+- Trait Object // run time, dynamic // dyn trait
+
+- polymorphism
+- monomorphism
+
