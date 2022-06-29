@@ -143,3 +143,29 @@ fn some_function<T, U>(t: &T, u: &U) -> i32
 - Trait as Parameters
 - Returning Types that implement Traits
 
+You can only use `impl Trait` if you returning a single type.
+
+## Scratch 014
+
+Most of the time, lifetimes are implicit and inferred.
+We must annotate lifetimes when the lifetimes of references could be related in a few different ways. Rust requires us to annotate the relationships using geeric lifetime parameters to ensure the actual references used at runtime will definitely be valid.
+
+The main aim of lifetimes is to prevent dangling reference.
+
+- Preventing Dangling References with Lifetimes
+- The Borrow Checker
+- Generic Lifetimes in Functions
+- Lifetime Annotiation Syntax
+- Lifetime Annotations in Function Signatures
+- Lifetime Annotations in Stuct Definitions
+
+Lifetime annotations don't change how long any of the references live. Rather, they describe the relationships of the lifetimes of multiple references to each other without affecting the lifetimes.
+
+The lifetime annotations become part of the contract of the function.
+
+Every reference has a lifetime and that you need to specify lifetime parameters for functions or structs that use reference.
+
+lifetime elision rule
+
+Because lifetime are a type of generic, the declarations of the lifetime parameter `'a` and the generic type parameter `T` go in the same list inside the angle brackets after the function name.
+
