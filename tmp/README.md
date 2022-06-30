@@ -187,3 +187,6 @@ Rust 有两种多态方式：
 
 Although we rarely need to annotate type in Rust, `collect` is one function you do often need to annotate because Rust isn't able to infer the kind of collection you want.
 
+## Scratch 018
+
+associated type

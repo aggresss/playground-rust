@@ -10,12 +10,12 @@ path = "src/lib.rs"
 
 
 [[bin]]
-name = "tmp1"
-path = "src/tmp1.rs"
+name = "tmp001"
+path = "src/tmp001.rs"
 
 [[bin]]
-name = "tmp2"
-path = "src/tmp2.rs"
+name = "tmp002"
+path = "src/tmp002.rs"
 
 [dependencies]
 rand = "0.8.3"
