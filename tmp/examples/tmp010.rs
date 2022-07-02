@@ -1,10 +1,11 @@
-fn main() {
-    let v1 = vec![1, 2, 3];
-
-    let mut v1_iter = v1.iter();
-
-    assert_eq!(v1_iter.next(), Some(&1));
-    assert_eq!(v1_iter.next(), Some(&2));
-    assert_eq!(v1_iter.next(), Some(&3));
-    assert_eq!(v1_iter.next(), None);
+enum List {
+    Cons(i32, Box<List>),
+    Nil,
 }
+
+use crate::List::{Cons, Nil};
+
+fn main() {
+    let _list = Cons(1, Box::new(Cons(2, Box::new(Cons(3, Box::new(Nil))))));
+}
+

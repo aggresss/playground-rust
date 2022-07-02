@@ -189,4 +189,24 @@ Although we rarely need to annotate type in Rust, `collect` is one function you 
 
 ## Scratch 018
 
-associated type
+- associated type
+- generic parameter
+
+## Scratch 019
+
+Boxes don't have performance overhead.
+
+```
+error[E0072]: recursive type `List` has infinite size
+ --> tmp/examples/tmp010.rs:1:1
+  |
+1 | enum List {
+  | ^^^^^^^^^ recursive type has infinite size
+2 |     Cons(i32, List),
+  |               ---- recursive without indirection
+  |
+help: insert some indirection (e.g., a `Box`, `Rc`, or `&`) to make `List` representable
+  |
+2 |     Cons(i32, Box<List>),
+  |               ++++    +
+```
