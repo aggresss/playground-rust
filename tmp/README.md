@@ -221,3 +221,8 @@ Deref coercion
 ## Scratch 020
 
 Rust automatically called `drop` for us when our instances went out of scope.
+
+Interior mutability // 应该叫 shared reference mutable, 让程序拥有多个共享引用的时候还可以修改引用数据。
+
+The `RefCell<T>` type is useful when you're sure your code follows the borrowing rules but the compiler is unable to understand and guarantee that.
+
