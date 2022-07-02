@@ -216,3 +216,8 @@ Rust substitutes the `*` operator with a call to the `deref` method and then a p
 Implicit Deref Coercions with Functions and Methods
 
 Deref coercion
+
+
+## Scratch 020
+
+Rust automatically called `drop` for us when our instances went out of scope.
