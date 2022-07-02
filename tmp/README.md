@@ -210,3 +210,9 @@ help: insert some indirection (e.g., a `Box`, `Rc`, or `&`) to make `List` repre
 2 |     Cons(i32, Box<List>),
   |               ++++    +
 ```
+
+Rust substitutes the `*` operator with a call to the `deref` method and then a plain dereference so we don't have to think about whether or not we need to call the `deref` method.
+
+Implicit Deref Coercions with Functions and Methods
+
+Deref coercion
