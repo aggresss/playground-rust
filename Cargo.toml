@@ -1,8 +1,9 @@
 [workspace]
 members = [
+    "leetcode",
     "workbench/cargo-demo",
     "workbench/closure-demo",
-     "workbench/ffi-demo",
+    "workbench/ffi-demo",
     "workbench/generic-demo",
     "workbench/macro-demo",
     "workbench/tokio-demo",
