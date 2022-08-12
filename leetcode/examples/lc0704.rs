@@ -5,12 +5,11 @@ fn main() {}
 struct Solution {}
 
 impl Solution {
-    pub fn search(nums: Vec<i32>, target: i32) -> i32 {
-        let nums_len = nums.len();
-        return Self::binary_search(nums, target, 0, nums_len - 1);
+    pub fn search(nums: & Vec<i32>, target: i32) -> i32 {
+        return Self::binary_search(nums, target, 0, nums.len() - 1);
     }
 
-    fn binary_search(nums: Vec<i32>, target: i32, left: usize, right: usize) -> i32 {
+    fn binary_search(nums: & Vec<i32>, target: i32, left: usize, right: usize) -> i32 {
         if right < left {
             return -1;
         }
@@ -36,9 +35,10 @@ mod tests {
     #[test]
     fn tests() {
         let nums: Vec<i32> = vec![-1, 0, 3, 5, 9, 12];
-        assert_eq!(4, Solution::search(nums, 9));
+        assert_eq!(4, Solution::search(&nums, 9));
+        assert_eq!(-1, Solution::search(&nums, 2));
 
         let nums: Vec<i32> = vec![1];
-        assert_eq!(0, Solution::search(nums, 1));
+        assert_eq!(0, Solution::search(&nums, 1));
     }
 }
