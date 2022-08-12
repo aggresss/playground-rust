@@ -1,24 +1,13 @@
 #![allow(dead_code)]
 
-fn main() {
-
-}
+fn main() {}
 
 struct Solution {}
 
 impl Solution {
     pub fn search(nums: Vec<i32>, target: i32) -> i32 {
-        if nums.len() == 1 {
-            if nums[0] == target {
-                return 0;
-            } else {
-                return -1;
-            }
-        }
-
-        let left = 0;
-        let right = nums.len() -1;
-        return Self::binary_search(nums, target, left, right);
+        let nums_len = nums.len();
+        return Self::binary_search(nums, target, 0, nums_len - 1);
     }
 
     fn binary_search(nums: Vec<i32>, target: i32, left: usize, right: usize) -> i32 {
@@ -46,7 +35,10 @@ mod tests {
 
     #[test]
     fn tests() {
-        let nums: Vec<i32> = vec![2, 5];
-        assert_eq!(0, Solution::search(nums, 2))
+        let nums: Vec<i32> = vec![-1, 0, 3, 5, 9, 12];
+        assert_eq!(4, Solution::search(nums, 9));
+
+        let nums: Vec<i32> = vec![1];
+        assert_eq!(0, Solution::search(nums, 1));
     }
 }
