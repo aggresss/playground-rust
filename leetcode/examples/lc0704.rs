@@ -5,11 +5,11 @@ fn main() {}
 struct Solution {}
 
 impl Solution {
-    pub fn search(nums: & Vec<i32>, target: i32) -> i32 {
+    pub fn search(nums: &Vec<i32>, target: i32) -> i32 {
         return Self::binary_search(nums, target, 0, nums.len() - 1);
     }
 
-    fn binary_search(nums: & Vec<i32>, target: i32, left: usize, right: usize) -> i32 {
+    fn binary_search(nums: &Vec<i32>, target: i32, left: usize, right: usize) -> i32 {
         if right < left {
             return -1;
         }
