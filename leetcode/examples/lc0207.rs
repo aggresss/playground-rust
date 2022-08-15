@@ -13,10 +13,8 @@ impl Solution {
         let mut in_degree = vec![0; num];
 
         for pre in prerequisites.iter() {
-            if !matrix[pre[1] as usize][pre[0] as usize] {
-                in_degree[pre[0] as usize] += 1;
-            }
             matrix[pre[1] as usize][pre[0] as usize] = true;
+            in_degree[pre[0] as usize] += 1;
         }
 
         let mut deq = VecDeque::new();
@@ -29,11 +27,11 @@ impl Solution {
         let mut cnt = 0;
         while let Some(node) = deq.pop_front() {
             cnt += 1;
-            for (i, &connect) in matrix[node].iter().enumerate() {
+            for (index, &connect) in matrix[node].iter().enumerate() {
                 if connect {
-                    in_degree[i] -= 1;
-                    if in_degree[i] == 0 {
-                        deq.push_back(i);
+                    in_degree[index] -= 1;
+                    if in_degree[index] == 0 {
+                        deq.push_back(index);
                     }
                 }
             }
