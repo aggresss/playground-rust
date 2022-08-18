@@ -4,6 +4,7 @@ pub fn depth_first_search(graph: &Graph, root: Vertex, objective: Vertex) -> Opt
     let mut visited: HashSet<Vertex> = HashSet::new();
     let mut history: Vec<u32> = Vec::new();
     let mut queue = VecDeque::new();
+    visited.insert(root);
     queue.push_back(root);
 
     while let Some(current_vertex) = queue.pop_front() {
