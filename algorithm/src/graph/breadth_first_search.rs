@@ -62,8 +62,7 @@ pub fn breadth_first_search(graph: &Graph, root: Node, target: Node) -> Option<V
         }
 
         for neighbor in current_node.neighbors(graph) {
-            if !visited.contains(&neighbor) {
-                visited.insert(neighbor);
+            if visited.insert(neighbor) {
                 queue.push_back(neighbor);
             }
         }
