@@ -18,11 +18,12 @@ impl DisjointSetUnion {
     }
 
     pub fn find_set(&mut self, v: usize) -> usize {
-        if v == self.nodes[v].parent {
-            return v;
+        let mut p = v;
+        while p != self.nodes[p].parent {
+            p = self.nodes[p].parent
         }
-        self.nodes[v].parent = self.find_set(self.nodes[v].parent);
-        self.nodes[v].parent
+
+        p
     }
 
     pub fn merge(&mut self, u: usize, v: usize) -> usize {
