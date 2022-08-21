@@ -4,6 +4,7 @@ pub struct DSUNode {
 }
 
 pub struct DisjointSetUnion {
+    // vector index is set NO.
     nodes: Vec<DSUNode>,
 }
 
