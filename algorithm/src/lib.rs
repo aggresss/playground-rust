@@ -1,6 +1,5 @@
+pub mod data_structures;
 pub mod graph;
-
-
 
 #[cfg(test)]
 mod tests {
