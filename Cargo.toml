@@ -6,6 +6,7 @@ members = [
     "workbench/closure-demo",
     "workbench/ffi-demo",
     "workbench/generic-demo",
+    "workbench/list",
     "workbench/macro-demo",
     "workbench/tokio-demo",
     "workbench/minigrep",
