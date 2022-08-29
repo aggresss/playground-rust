@@ -1,7 +1,15 @@
 fn main() {
-    let alpha = vec![100, 200];
+    let some_number = Some(9);
 
-    for i in 1..alpha.len() {
-        println!("{}", i);
+    let another_number = some_number.map(|n| n-1).map(|n| n*n).and_then(|n| divide(n, 4));
+
+    println!("{:?}", another_number.unwrap());
+}
+
+fn divide(number: i32, divisor: i32) -> Option<i32> {
+    if divisor != 0 {
+        Some(number/divisor)
+    } else {
+        None
     }
 }
