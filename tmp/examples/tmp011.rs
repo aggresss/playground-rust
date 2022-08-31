@@ -1,15 +1,23 @@
-fn main() {
-    let some_number = Some(9);
+use std::{cell::RefCell, rc::Rc};
 
-    let another_number = some_number.map(|n| n-1).map(|n| n*n).and_then(|n| divide(n, 4));
-
-    println!("{:?}", another_number.unwrap());
+#[derive(Debug)]
+enum List {
+    Cons(i32, RefCell<Rc<List>>),
+    Nil,
 }
 
-fn divide(number: i32, divisor: i32) -> Option<i32> {
-    if divisor != 0 {
-        Some(number/divisor)
-    } else {
-        None
+impl List {
+    fn tail(&self) -> Option<&RefCell<Rc<List>>> {
+        match self {
+            List::Cons(_, item) => Some(item),
+            List::Nil => None,
+        }
     }
+}
+
+fn main() {
+    let a = Rc::new(List::Cons(5, RefCell::new(Rc::new(List::Nil))));
+    println!("a initial ref count: {}", Rc::strong_count(&a));
+
+    println!("a second: {:?}", a.tail());
 }
