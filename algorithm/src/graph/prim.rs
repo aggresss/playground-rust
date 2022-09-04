@@ -35,7 +35,7 @@ where
     mst.insert(start, BTreeMap::new());
 
     for (v, c) in &graph[&start] {
-        prio.push(Reverse((*c, v, start)));
+        prio.push(Reverse((*c, v, &start)));
     }
 
     while let Some(Reverse((dist, t, prev))) = prio.pop() {
@@ -43,11 +43,11 @@ where
             continue;
         }
 
-        add_edge(&mut mst, prev, *t, dist);
+        add_edge(&mut mst, *prev, *t, dist);
 
         for (v, c) in &graph[t] {
             if !mst.contains_key(v) {
-                prio.push(Reverse((*c, v, *t)));
+                prio.push(Reverse((*c, v, t)));
             }
         }
     }
