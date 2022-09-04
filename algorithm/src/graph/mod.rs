@@ -9,3 +9,6 @@ pub use self::disjoint_set_union::DisjointSetUnion;
 
 mod prim;
 pub use self::prim::{prim, prim_with_start};
+
+mod kruskal;
+pub use self::kruskal::kruskal;
