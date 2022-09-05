@@ -1,10 +1,28 @@
 #![allow(dead_code)]
 
-use std::cmp::Reverse;
-use std::collections::{BTreeMap, BinaryHeap};
-use std::ops::Add;
+use std::{collections::{BTreeMap, BinaryHeap}, ops::Add, cmp::Reverse};
 
-fn main() {}
+fn main() {
+    let mut graph = BTreeMap::new();
+    add_edge(&mut graph, 'a', 'b', 6);
+    add_edge(&mut graph, 'a', 'c', 7);
+    add_edge(&mut graph, 'a', 'e', 2);
+    add_edge(&mut graph, 'a', 'f', 3);
+    add_edge(&mut graph, 'b', 'c', 5);
+    add_edge(&mut graph, 'c', 'e', 5);
+    add_edge(&mut graph, 'd', 'e', 4);
+    add_edge(&mut graph, 'd', 'f', 1);
+    add_edge(&mut graph, 'e', 'f', 2);
+
+    let mut ans = BTreeMap::new();
+    add_edge(&mut ans, 'd', 'f', 1);
+    add_edge(&mut ans, 'e', 'f', 2);
+    add_edge(&mut ans, 'a', 'e', 2);
+    add_edge(&mut ans, 'b', 'c', 5);
+    add_edge(&mut ans, 'c', 'e', 5);
+
+    assert_eq!(prim(&graph), ans);
+}
 
 type Graph<V, E> = BTreeMap<V, BTreeMap<V, E>>;
 
@@ -24,7 +42,7 @@ where
 {
     match graph.keys().next() {
         Some(v) => prim_with_start(graph, *v),
-        None => BTreeMap::new(),
+        None => Graph::new(),
     }
 }
 
@@ -34,6 +52,7 @@ where
     E: Ord + Copy + Add,
 {
     let mut mst: Graph<V, E> = Graph::new();
+
     let mut prio = BinaryHeap::new();
 
     mst.insert(start, BTreeMap::new());
