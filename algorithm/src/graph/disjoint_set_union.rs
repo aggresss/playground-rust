@@ -11,8 +11,8 @@ pub struct DisjointSetUnion {
 impl DisjointSetUnion {
     pub fn new(n: usize) -> DisjointSetUnion {
         let mut nodes = Vec::new();
-        nodes.reserve_exact(n + 1);
-        for i in 0..=n {
+        nodes.reserve_exact(n);
+        for i in 0..n {
             nodes.push(DSUNode { parent: i, size: 1 });
         }
         DisjointSetUnion { nodes }
@@ -89,6 +89,6 @@ mod tests {
         for i in 2..=9 {
             assert_eq!(comp_1, dsu.find_set(i));
         }
-        assert_ne!(comp_1, dsu.find_set(10));
+        assert_ne!(comp_1, dsu.find_set(0));
     }
 }
