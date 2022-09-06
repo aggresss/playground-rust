@@ -1,79 +1,95 @@
+
 #![allow(dead_code)]
 
-use std::{collections::{BTreeMap, BinaryHeap}, ops::Add, cmp::Reverse};
-
 fn main() {
-    let mut graph = BTreeMap::new();
-    add_edge(&mut graph, 'a', 'b', 6);
-    add_edge(&mut graph, 'a', 'c', 7);
-    add_edge(&mut graph, 'a', 'e', 2);
-    add_edge(&mut graph, 'a', 'f', 3);
-    add_edge(&mut graph, 'b', 'c', 5);
-    add_edge(&mut graph, 'c', 'e', 5);
-    add_edge(&mut graph, 'd', 'e', 4);
-    add_edge(&mut graph, 'd', 'f', 1);
-    add_edge(&mut graph, 'e', 'f', 2);
-
-    let mut ans = BTreeMap::new();
-    add_edge(&mut ans, 'd', 'f', 1);
-    add_edge(&mut ans, 'e', 'f', 2);
-    add_edge(&mut ans, 'a', 'e', 2);
-    add_edge(&mut ans, 'b', 'c', 5);
-    add_edge(&mut ans, 'c', 'e', 5);
-
-    assert_eq!(prim(&graph), ans);
-}
-
-type Graph<V, E> = BTreeMap<V, BTreeMap<V, E>>;
-
-pub fn add_edge<V, E>(graph: &mut Graph<V, E>, v1: V, v2: V, c: E)
-where
-    V: Ord + Copy,
-    E: Ord + Copy + Add,
-{
-    graph.entry(v1).or_insert_with(BTreeMap::new).insert(v2, c);
-    graph.entry(v2).or_insert_with(BTreeMap::new).insert(v1, c);
-}
-
-pub fn prim<V, E>(graph: &Graph<V, E>) -> Graph<V, E>
-where
-    V: Ord + Copy,
-    E: Ord + Copy + Add,
-{
-    match graph.keys().next() {
-        Some(v) => prim_with_start(graph, *v),
-        None => Graph::new(),
+    let mut dsu = DisjointSetUnion::new(10);
+    let edges: Vec<(usize, usize)> = vec![
+        (1, 2),
+        (2, 1),
+        (2, 3),
+        (1, 3),
+        (4, 5),
+        (7, 8),
+        (4, 8),
+        (3, 8),
+        (1, 9),
+        (2, 9),
+        (3, 9),
+        (4, 9),
+        (5, 9),
+        (6, 9),
+        (7, 9),
+    ];
+    let expected_edges: Vec<(usize, usize)> = vec![
+        (1, 2),
+        (2, 3),
+        (4, 5),
+        (7, 8),
+        (4, 8),
+        (3, 8),
+        (1, 9),
+        (6, 9),
+    ];
+    let mut added_edges: Vec<(usize, usize)> = Vec::new();
+    for (u, v) in edges {
+        if dsu.merge(u, v) < std::usize::MAX {
+            added_edges.push((u, v));
+        }
+        assert!(dsu.merge(u, v) == std::usize::MAX);
     }
+    assert_eq!(added_edges, expected_edges);
+    let comp_1 = dsu.find_set(1);
+    for i in 2..=9 {
+        assert_eq!(comp_1, dsu.find_set(i));
+    }
+    assert_ne!(comp_1, dsu.find_set(0));
 }
 
-pub fn prim_with_start<V, E>(graph: &Graph<V, E>, start: V) -> Graph<V, E>
-where
-    V: Ord + Copy,
-    E: Ord + Copy + Add,
-{
-    let mut mst: Graph<V, E> = Graph::new();
 
-    let mut prio = BinaryHeap::new();
+pub struct DSUNode {
+    parent: usize,
+    size: usize,
+}
 
-    mst.insert(start, BTreeMap::new());
+pub struct DisjointSetUnion {
+    nodes: Vec<DSUNode>,
+}
 
-    for (v, c) in &graph[&start] {
-        prio.push(Reverse((*c, v, &start)));
+impl DisjointSetUnion {
+    pub fn new(n: usize) -> DisjointSetUnion {
+        let mut nodes = Vec::new();
+        nodes.reserve_exact(n);
+        for i in 0..n {
+            nodes.push(DSUNode { parent: i, size: 1 });
+        }
+        DisjointSetUnion { nodes }
     }
 
-    while let Some(Reverse((dist, t, prev))) = prio.pop() {
-        if mst.contains_key(t) {
-            continue;
+    pub fn find_set(& self, v: usize) -> usize {
+        let mut p = v;
+        while p != self.nodes[p].parent {
+            p = self.nodes[p].parent
         }
 
-        add_edge(&mut mst, *prev, *t, dist);
-
-        for (v, c) in &graph[t] {
-            if !mst.contains_key(v) {
-                prio.push(Reverse((*c, v, t)));
-            }
-        }
+        p
     }
 
-    mst
+    pub fn merge(&mut self, u: usize, v: usize) -> usize {
+        let mut a = self.find_set(u);
+        let mut b = self.find_set(v);
+
+        if a == b {
+            return std::usize::MAX;
+        }
+
+        if self.nodes[a].size < self.nodes[b].size {
+            std::mem::swap(&mut a, &mut b);
+        }
+
+        self.nodes[b].parent = a;
+        self.nodes[a].size += self.nodes[b].size;
+
+        a
+    }
 }
+
