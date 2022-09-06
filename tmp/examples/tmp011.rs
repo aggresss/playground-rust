@@ -1,4 +1,3 @@
-
 #![allow(dead_code)]
 
 fn main() {
@@ -45,7 +44,6 @@ fn main() {
     assert_ne!(comp_1, dsu.find_set(0));
 }
 
-
 pub struct DSUNode {
     parent: usize,
     size: usize,
@@ -65,7 +63,7 @@ impl DisjointSetUnion {
         DisjointSetUnion { nodes }
     }
 
-    pub fn find_set(& self, v: usize) -> usize {
+    pub fn find_set(&self, v: usize) -> usize {
         let mut p = v;
         while p != self.nodes[p].parent {
             p = self.nodes[p].parent
@@ -92,4 +90,3 @@ impl DisjointSetUnion {
         a
     }
 }
-
