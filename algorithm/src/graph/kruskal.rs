@@ -40,15 +40,11 @@ pub fn kruskal(mut edges: Vec<Edge>, number_of_vertices: i64) -> (i64, Vec<Edge>
             break;
         }
 
-        let source: i64 = edge.source;
-        let destination: i64 = edge.destination;
-
-        if dsu.merge(source as usize, destination as usize) < std::usize::MAX {
+        if dsu.merge(edge.source as usize, edge.destination as usize) < std::usize::MAX {
             merge_count += 1;
             let cost: i64 = edge.cost;
             total_cost += cost;
-            let final_edge: Edge = Edge::new(source, destination, cost);
-            final_edges.push(final_edge);
+            final_edges.push(Edge::new(edge.source, edge.destination, cost));
         }
     }
     (total_cost, final_edges)
