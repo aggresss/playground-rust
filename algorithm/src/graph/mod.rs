@@ -12,3 +12,6 @@ pub use self::prim::{prim, prim_with_start};
 
 mod kruskal;
 pub use self::kruskal::kruskal;
+
+mod topological_sort;
+pub use self::topological_sort::topological_sort;
