@@ -15,3 +15,6 @@ pub use self::kruskal::kruskal;
 
 mod topological_sort;
 pub use self::topological_sort::topological_sort;
+
+mod tarjan;
+pub use self::tarjan::StronglyConnectedComponents;
