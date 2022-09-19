@@ -18,3 +18,6 @@ pub use self::topological_sort::topological_sort;
 
 mod tarjan;
 pub use self::tarjan::StronglyConnectedComponents;
+
+mod dijkstra;
+pub use self::dijkstra::dijkstra;
