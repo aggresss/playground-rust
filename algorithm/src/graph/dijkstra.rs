@@ -29,7 +29,7 @@ where
 
         for (next, weight) in &graph[new] {
             match ans.get(next) {
-                Some(Some((_, dist_next))) if dist_new + *weight >= *dist_next => {}
+                Some(Some((_, dist_next))) if *weight + dist_new >= *dist_next => {}
                 Some(None) => {}
                 _ => {
                     ans.insert(*next, Some((*new, *weight + dist_new)));
