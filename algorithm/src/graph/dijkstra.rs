@@ -16,9 +16,9 @@ where
 
     ans.insert(*start, None);
 
-    for (new, weight) in &graph[start] {
-        ans.insert(*new, Some((*start, *weight)));
-        prio.push(Reverse((*weight, new, start)));
+    for (new, new_weight) in &graph[start] {
+        ans.insert(*new, Some((*start, *new_weight)));
+        prio.push(Reverse((*new_weight, new, start)));
     }
 
     while let Some(Reverse((dist_new, new, prev))) = prio.pop() {
@@ -27,13 +27,13 @@ where
             _ => continue,
         }
 
-        for (next, weight) in &graph[new] {
+        for (next, next_weight) in &graph[new] {
             match ans.get(next) {
-                Some(Some((_, dist_next))) if *weight + dist_new >= *dist_next => {}
+                Some(Some((_, dist_next))) if *next_weight + dist_new >= *dist_next => {}
                 Some(None) => {}
                 _ => {
-                    ans.insert(*next, Some((*new, *weight + dist_new)));
-                    prio.push(Reverse((*weight + dist_new, next, new)));
+                    ans.insert(*next, Some((*new, *next_weight + dist_new)));
+                    prio.push(Reverse((*next_weight + dist_new, next, new)));
                 }
             }
         }
