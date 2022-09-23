@@ -1,4 +1,4 @@
-use std::{collections::{BTreeMap, BinaryHeap}, ops::Add, cmp::Reverse};
+use std::{collections::{BTreeMap, BinaryHeap}, cmp::Reverse, ops::Add};
 
 fn main() {}
 
@@ -21,11 +21,11 @@ where
     while let Some(Reverse((dist_new, new, _))) = prio.pop() {
         for (next, weight) in &graph[new] {
             match ans.get(next) {
-                Some(Some((_, next_dist))) if dist_new + *weight >= *next_dist => {}
+                Some(Some((_, dist_next))) if dist_new + *weight >= *dist_next => {}
                 Some(None) => {}
                 _ => {
-                    prio.push(Reverse((dist_new + *weight, next, new)));
                     ans.insert(*next, Some((*new, dist_new + *weight)));
+                    prio.push(Reverse((dist_new + *weight, next, new)));
                 }
             }
         }
@@ -33,4 +33,3 @@ where
 
     ans
 }
-
