@@ -1,4 +1,4 @@
-use std::{collections::{BTreeMap, BinaryHeap}, process::Output, cmp::Reverse, ops::Add};
+use std::{collections::{BTreeMap, BinaryHeap}, cmp::Reverse, ops::Add};
 
 fn main() {}
 
