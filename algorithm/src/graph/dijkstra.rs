@@ -11,29 +11,23 @@ where
     V: Ord + Copy,
     E: Ord + Copy + Add<Output = E>,
 {
-    let mut ans = BTreeMap::new();
     let mut prio = BinaryHeap::new();
+    let mut ans = BTreeMap::new();
 
     ans.insert(*start, None);
-
-    for (new, new_weight) in &graph[start] {
-        ans.insert(*new, Some((*start, *new_weight)));
-        prio.push(Reverse((*new_weight, new, start)));
+    for (new, weight) in &graph[start] {
+        prio.push(Reverse((*weight, new, start)));
+        ans.insert(*new, Some((*start, *weight)));
     }
 
-    while let Some(Reverse((dist_new, new, prev))) = prio.pop() {
-        match ans[new] {
-            Some((p, d)) if p == *prev && d == dist_new => {}
-            _ => continue,
-        }
-
-        for (next, next_weight) in &graph[new] {
+    while let Some(Reverse((dist_new, new, _))) = prio.pop() {
+        for (next, weight) in &graph[new] {
             match ans.get(next) {
-                Some(Some((_, dist_next))) if *next_weight + dist_new >= *dist_next => {}
+                Some(Some((_, dist_next))) if dist_new + *weight >= *dist_next => {}
                 Some(None) => {}
                 _ => {
-                    ans.insert(*next, Some((*new, *next_weight + dist_new)));
-                    prio.push(Reverse((*next_weight + dist_new, next, new)));
+                    prio.push(Reverse((dist_new + *weight, next, new)));
+                    ans.insert(*next, Some((*new, dist_new + *weight)));
                 }
             }
         }
