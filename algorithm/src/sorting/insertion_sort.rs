@@ -15,7 +15,7 @@ where
         }
 
         if j == 0 && arr[0] > cur {
-            arrp[0] = cur;
+            arr[0] = cur;
         } else {
             arr[j + 1] = cur;
         }
@@ -24,6 +24,7 @@ where
 
 #[cfg(test)]
 mod tests {
+    use super::super::is_sorted;
     use super::*;
 
     #[test]
@@ -42,7 +43,7 @@ mod tests {
 
     #[test]
     fn already_sorted() {
-        let mut arr: [&str; 4] = ["a", "b", "c"];
+        let mut arr: [&str; 3] = ["a", "b", "c"];
         insertion_sort(&mut arr);
         assert!(is_sorted(&arr));
     }
