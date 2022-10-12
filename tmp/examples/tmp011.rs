@@ -1,39 +1,82 @@
-use std::{
-    cmp::Reverse,
-    collections::{BTreeMap, BinaryHeap},
-    ops::Add,
-};
+use std::mem;
 
-fn main() {}
+pub struct List {
+    head: Link,
+}
 
-type Graph<V, E> = BTreeMap<V, BTreeMap<V, E>>;
+#[derive(Clone)]
+enum Link {
+    Empty,
+    More(Box<Node>),
+}
 
-pub fn dijkstra<V, E>(graph: &Graph<V, E>, start: &V) -> BTreeMap<V, Option<(V, E)>>
-where
-    V: Ord + Copy,
-    E: Ord + Copy + Add<Output = E>,
-{
-    let mut prio = BinaryHeap::new();
-    let mut ans = BTreeMap::new();
+#[derive(Clone)]
+struct Node {
+    elem: i32,
+    next: Link,
+}
 
-    ans.insert(*start, None);
-    for (new, weight) in &graph[start] {
-        prio.push(Reverse((*weight, new, start)));
-        ans.insert(*new, Some((*start, *weight)));
+impl List {
+    pub fn new() -> Self {
+        List { head: Link::Empty }
     }
 
-    while let Some(Reverse((dist_new, new, _))) = prio.pop() {
-        for (next, weight) in &graph[new] {
-            match ans.get(next) {
-                Some(Some((_, dist_next))) if dist_new + *weight >= *dist_next => {}
-                Some(None) => {}
-                _ => {
-                    prio.push(Reverse((dist_new + *weight, next, new)));
-                    ans.insert(*next, Some((*new, dist_new + *weight)));
-                }
+    pub fn push(&mut self, elem: i32) {
+        let new_node = Box::new(Node {
+            elem: elem,
+            next: mem::replace(&mut self.head, Link::Empty),
+        });
+
+        self.head = Link::More(new_node);
+    }
+
+    pub fn pop(&mut self) -> Option<i32> {
+        match std::mem::replace(&mut self.head, Link::Empty) {
+            Link::Empty => None,
+            Link::More(node) => {
+                self.head = node.next;
+                Some(node.elem)
             }
         }
     }
-
-    ans
 }
+
+impl Drop for List {
+    fn drop(&mut self) {
+        let mut cur_link = mem::replace(&mut self.head, Link::Empty);
+
+        while let Link::More(mut boxed_node) = cur_link {
+            cur_link = mem::replace(&mut boxed_node.next, Link::Empty);
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn basic() {
+        let mut list = List::new();
+
+        assert_eq!(list.pop(), None);
+
+        list.push(1);
+        list.push(2);
+        list.push(3);
+
+        assert_eq!(list.pop(), Some(3));
+        assert_eq!(list.pop(), Some(2));
+
+        list.push(4);
+        list.push(5);
+
+        assert_eq!(list.pop(), Some(5));
+        assert_eq!(list.pop(), Some(4));
+
+        assert_eq!(list.pop(), Some(1));
+        assert_eq!(list.pop(), None);
+    }
+}
+
+fn main() {}
