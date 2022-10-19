@@ -1,12 +1,12 @@
 type Link<T> = Option<Box<Node<T>>>;
 
-pub struct List<T> {
-    head: Link<T>,
-}
-
 struct Node<T> {
     elem: T,
     next: Link<T>,
+}
+
+pub struct List<T> {
+    head: Link<T>,
 }
 
 impl<T> List<T> {
