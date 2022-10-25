@@ -68,6 +68,7 @@ pub struct IntoIter<T>(List<T>);
 
 impl<T> Iterator for IntoIter<T> {
     type Item = T;
+
     fn next(&mut self) -> Option<Self::Item> {
         self.0.pop()
     }
@@ -79,6 +80,7 @@ pub struct Iter<'a, T> {
 
 impl<'a, T> Iterator for Iter<'a, T> {
     type Item = &'a T;
+
     fn next(&mut self) -> Option<Self::Item> {
         self.next.map(|node| {
             self.next = node.next.as_deref();
