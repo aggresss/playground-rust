@@ -3,7 +3,6 @@ use std::rc::Rc;
 
 type Link<T> = Option<Rc<RefCell<Node<T>>>>;
 
-
 struct Node<T> {
     elem: T,
     next: Link<T>,
@@ -63,21 +62,6 @@ impl<T> List<T> {
         }
     }
 
-    pub fn pop_back(&mut self) -> Option<T> {
-        self.tail.take().map(|old_tail| {
-            match old_tail.borrow_mut().prev.take() {
-                Some(new_tail) => {
-                    new_tail.borrow_mut().next.take();
-                    self.tail = Some(new_tail);
-                }
-                None => {
-                    self.head.take();
-                }
-            }
-            Rc::try_unwrap(old_tail).ok().unwrap().into_inner().elem
-        })
-    }
-
     pub fn pop_front(&mut self) -> Option<T> {
         self.head.take().map(|old_head| {
             match old_head.borrow_mut().next.take() {
@@ -93,6 +77,21 @@ impl<T> List<T> {
         })
     }
 
+    pub fn pop_back(&mut self) -> Option<T> {
+        self.tail.take().map(|old_tail| {
+            match old_tail.borrow_mut().prev.take() {
+                Some(new_tail) => {
+                    new_tail.borrow_mut().next.take();
+                    self.tail = Some(new_tail);
+                }
+                None => {
+                    self.head.take();
+                }
+            }
+            Rc::try_unwrap(old_tail).ok().unwrap().into_inner().elem
+        })
+    }
+
     pub fn peek_front(&self) -> Option<Ref<T>> {
         self.head
             .as_ref()
@@ -105,14 +104,14 @@ impl<T> List<T> {
             .map(|node| Ref::map(node.borrow(), |node| &node.elem))
     }
 
-    pub fn peek_back_mut(&mut self) -> Option<RefMut<T>> {
-        self.tail
+    pub fn peek_front_mut(&mut self) -> Option<RefMut<T>> {
+        self.head
             .as_ref()
             .map(|node| RefMut::map(node.borrow_mut(), |node| &mut node.elem))
     }
 
-    pub fn peek_front_mut(&mut self) -> Option<RefMut<T>> {
-        self.head
+    pub fn peek_back_mut(&mut self) -> Option<RefMut<T>> {
+        self.tail
             .as_ref()
             .map(|node| RefMut::map(node.borrow_mut(), |node| &mut node.elem))
     }
