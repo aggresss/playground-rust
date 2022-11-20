@@ -8,7 +8,7 @@ struct Node<T> {
 }
 pub struct List<T> {
     head: Link<T>,
-    tail: *mut Node<T>,
+    tail: Link<T>,
 }
 
 impl<T> List<T> {
