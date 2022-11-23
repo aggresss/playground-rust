@@ -6,6 +6,7 @@ struct Node<T> {
     elem: T,
     next: Link<T>,
 }
+
 pub struct List<T> {
     head: Link<T>,
     tail: Link<T>,
@@ -18,6 +19,7 @@ impl<T> List<T> {
             tail: ptr::null_mut(),
         }
     }
+
     pub fn push(&mut self, elem: T) {
         unsafe {
             let new_tail = Box::into_raw(Box::new(Node {
@@ -34,12 +36,14 @@ impl<T> List<T> {
             self.tail = new_tail;
         }
     }
+
     pub fn pop(&mut self) -> Option<T> {
         unsafe {
             if self.head.is_null() {
                 None
             } else {
                 let head = Box::from_raw(self.head);
+
                 self.head = head.next;
 
                 if self.head.is_null() {
@@ -90,6 +94,7 @@ pub struct IntoIter<T>(List<T>);
 
 impl<T> Iterator for IntoIter<T> {
     type Item = T;
+
     fn next(&mut self) -> Option<Self::Item> {
         self.0.pop()
     }
