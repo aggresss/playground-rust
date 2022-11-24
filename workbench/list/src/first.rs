@@ -1,8 +1,5 @@
 use std::mem;
 
-pub struct List {
-    head: Link,
-}
 
 #[derive(Clone)]
 enum Link {
@@ -14,6 +11,10 @@ enum Link {
 struct Node {
     elem: i32,
     next: Link,
+}
+
+pub struct List {
+    head: Link,
 }
 
 impl List {
