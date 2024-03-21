@@ -43,5 +43,6 @@
 - [Rust Course](https://course.rs/about-book.html)
 - [Learn Rust With Entirely Too Many Linked Lists](https://rust-unofficial.github.io/too-many-lists/)
 - [The Algorithms - Rust](https://github.com/TheAlgorithms/Rust)
+- [Rust for C#/.NET Developers](https://microsoft.github.io/rust-for-dotnet-devs/latest/)
 
 ---
