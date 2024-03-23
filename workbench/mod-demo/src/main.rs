@@ -15,4 +15,6 @@ fn main() {
 
     toy1::run();
     toy2::run();
+
+    println!("{}", toy::HIGH_GAIN_2)
 }
