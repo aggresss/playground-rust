@@ -9,6 +9,7 @@ members = [
     "workbench/generic-demo",
     "workbench/list",
     "workbench/macro-demo",
+    "workbench/mod-demo",
     "workbench/tokio-demo",
     "workbench/minigrep",
     "tmp"
