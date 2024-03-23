@@ -1,4 +1,5 @@
 mod toy;
+mod toy_conductor;
 
 mod toy1 {
     include!("./toy_implements.rs");
@@ -15,6 +16,9 @@ fn main() {
 
     toy1::run();
     toy2::run();
+
+    toy_conductor::nested::run();
+    toy_conductor::run();
 
     println!("{}", toy::HIGH_GAIN_2)
 }
