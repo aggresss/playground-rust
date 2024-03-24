@@ -14,6 +14,9 @@ fn main() {
     toy::bear_eat();
     toy::bear_sleep();
 
+    toy::bear::bear_eat();
+    toy::bear::bear_sleep();
+
     toy1::run();
     toy2::run();
 

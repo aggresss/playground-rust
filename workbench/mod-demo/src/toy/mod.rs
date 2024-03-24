@@ -1,4 +1,4 @@
-mod bear;
+pub mod bear;
 mod fly;
 mod runner;
 
