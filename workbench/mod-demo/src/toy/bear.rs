@@ -5,3 +5,7 @@ pub fn bear_eat() {
 pub fn bear_sleep() {
     println!("bear is go sleep !");
 }
+
+pub fn bear_play() {
+    println!("bear is play football !");
+}

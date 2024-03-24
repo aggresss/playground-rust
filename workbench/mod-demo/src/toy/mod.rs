@@ -8,3 +8,7 @@ pub use runner::dog_run;
 
 const HIGH_GAIN_1: f64 = 1.11;
 pub const HIGH_GAIN_2: f64 = 2.22;
+
+pub fn bear_play() {
+    bear::bear_play();
+}
