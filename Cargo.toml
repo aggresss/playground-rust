@@ -13,5 +13,6 @@ members = [
     "workbench/tokio-demo",
     "workbench/minigrep",
     "workbench/phantom-demo",
+    "workbench/trait-demo",
     "tmp",
 ]
