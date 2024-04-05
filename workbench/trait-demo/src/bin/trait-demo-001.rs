@@ -1,8 +1,21 @@
-trait Default {
-    fn default() -> Self;
+trait Trait {
+    fn method(&self) {
+        println!("default impl");
+    }
+}
+
+struct SomeType;
+struct OtherType;
+
+impl Trait for SomeType {}
+
+impl Trait for OtherType {
+    fn method(&self) {
+        println!("OtherType impl");
+    }
 }
 
 fn main() {
-    let zero: i32 = Default::default();
-    let zero = i32::default();
+    SomeType.method();
+    OtherType.method();
 }
