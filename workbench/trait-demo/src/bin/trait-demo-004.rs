@@ -1,5 +1,5 @@
-use std::fmt::Debug;
 use std::convert::TryInto;
+use std::fmt::Debug;
 use std::ops::Rem;
 
 trait Even {
