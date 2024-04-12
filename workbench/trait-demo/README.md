@@ -1,7 +1,18 @@
 
 
-- https://www.cnblogs.com/RioTian/p/18072690
+https://www.cnblogs.com/RioTian/p/18072690
 
+- 引言
+- Trait 基础
+- 自动 Trait
+- 泛型 Trait
+- 格式化 Trait
+- 操作符 Trait
+- 转换 Trait
+- 错误处理
+- 迭代器 Trait
+- I/O Trait
+- 总结
 
 `use std::prelude::v1::*`
 

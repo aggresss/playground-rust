@@ -5,6 +5,7 @@ members = [
     "leetcode",
     "workbench/cargo-demo",
     "workbench/closure-demo",
+    "workbench/echo-demo",
     "workbench/ffi-demo",
     "workbench/generic-demo",
     "workbench/list",
