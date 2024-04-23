@@ -1,6 +1,7 @@
 [workspace]
 resolver = "2"
 members = [
+    "tmp",
     "algorithm",
     "leetcode",
     "workbench/cargo-demo",
@@ -15,5 +16,4 @@ members = [
     "workbench/minigrep",
     "workbench/phantom-demo",
     "workbench/trait-demo",
-    "tmp",
 ]

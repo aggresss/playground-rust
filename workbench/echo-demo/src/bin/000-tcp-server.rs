@@ -1,40 +1,45 @@
-use std::io::Read;
-use std::io::Write;
-use std::net::{TcpListener, TcpStream};
+use std::io::{Read, Write};
+use std::net::{Shutdown, TcpListener, TcpStream};
 use std::thread;
 
 fn handle_client(mut stream: TcpStream) {
-    // read 20 bytes at a time from stream echoing back to stream
-    loop {
-        let mut read = [0; 1028];
-        match stream.read(&mut read) {
-            Ok(n) => {
-                if n == 0 {
-                    // connection was closed
-                    break;
-                }
-                stream.write(&read[0..n]).unwrap();
-            }
-            Err(err) => {
-                panic!("{}", err);
-            }
+    let mut data = [0 as u8; 50]; // using 50 byte buffer
+    while match stream.read(&mut data) {
+        Ok(size) => {
+            // echo everything!
+            stream.write(&data[0..size]).unwrap();
+            true
         }
-    }
+        Err(_) => {
+            println!(
+                "An error occurred, terminating connection with {}",
+                stream.peer_addr().unwrap()
+            );
+            stream.shutdown(Shutdown::Both).unwrap();
+            false
+        }
+    } {}
 }
 
 fn main() {
-    let listener = TcpListener::bind("127.0.0.1:8080").unwrap();
-
+    let listener = TcpListener::bind("0.0.0.0:3333").unwrap();
+    // accept connections and process them, spawning a new thread for each one
+    println!("Server listening on port 3333");
     for stream in listener.incoming() {
         match stream {
             Ok(stream) => {
+                println!("New connection: {}", stream.peer_addr().unwrap());
                 thread::spawn(move || {
-                    handle_client(stream);
+                    // connection succeeded
+                    handle_client(stream)
                 });
             }
-            Err(_) => {
-                println!("Error");
+            Err(e) => {
+                println!("Error: {}", e);
+                /* connection failed */
             }
         }
     }
+    // close the socket server
+    drop(listener);
 }
