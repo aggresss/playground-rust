@@ -45,5 +45,6 @@
 - [The Algorithms - Rust](https://github.com/TheAlgorithms/Rust)
 - [Rust for C#/.NET Developers](https://microsoft.github.io/rust-for-dotnet-devs/latest/)
 - [Rust Cookbook](https://rust-lang-nursery.github.io/rust-cookbook/intro.html)
+- [Command Line Applications in Rust](https://rust-cli.github.io/book/index.html)
 
 ---
