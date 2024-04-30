@@ -36,6 +36,7 @@
 - [Nomicon <sup>NOM</sup>](https://doc.rust-lang.org/nomicon/index.html)
 - [Reference <sup>REF</sup>](https://doc.rust-lang.org/reference/index.html)
 - [The Cargo Book](https://doc.rust-lang.org/cargo/)
+- [Command Line Applications in Rust](https://rust-cli.github.io/book/index.html)
 
 ### Unofficial
 
@@ -45,6 +46,5 @@
 - [The Algorithms - Rust](https://github.com/TheAlgorithms/Rust)
 - [Rust for C#/.NET Developers](https://microsoft.github.io/rust-for-dotnet-devs/latest/)
 - [Rust Cookbook](https://rust-lang-nursery.github.io/rust-cookbook/intro.html)
-- [Command Line Applications in Rust](https://rust-cli.github.io/book/index.html)
 
 ---
