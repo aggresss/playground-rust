@@ -47,4 +47,10 @@
 - [Rust for C#/.NET Developers](https://microsoft.github.io/rust-for-dotnet-devs/latest/)
 - [Rust Cookbook](https://rust-lang-nursery.github.io/rust-cookbook/intro.html)
 
+## Crates
+
+- [crates.io](https://crates.io/)
+- [lib.rs](https://lib.rs/)
+- [Rust Cookbook](https://rust-lang-nursery.github.io/rust-cookbook/intro.html)
+
 ---
