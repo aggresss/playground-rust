@@ -46,6 +46,7 @@
 - [The Algorithms - Rust](https://github.com/TheAlgorithms/Rust)
 - [Rust for C#/.NET Developers](https://microsoft.github.io/rust-for-dotnet-devs/latest/)
 - [Rust Cookbook](https://rust-lang-nursery.github.io/rust-cookbook/intro.html)
+- [Async programming in Rust with async-std](https://book.async.rs/introduction)
 
 ## Crates
 
