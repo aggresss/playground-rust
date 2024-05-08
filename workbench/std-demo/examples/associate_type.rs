@@ -40,9 +40,7 @@ fn main() {
     println!("output is {}", output);
 }
 
-
 /*
-
 https://cloud.tencent.com/developer/article/1561740
 
 可以看到，在 trait 中，带上泛型参数，也可以实现关联类型同样的工作。但是，它们之间有区别。
