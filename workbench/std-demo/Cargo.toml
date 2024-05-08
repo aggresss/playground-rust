@@ -8,7 +8,6 @@ edition = "2021"
 name = "tmplib"
 path = "src/lib.rs"
 
-
 [[bin]]
 name = "tmp001"
 path = "src/tmp001.rs"
@@ -18,4 +17,4 @@ name = "tmp002"
 path = "src/tmp002.rs"
 
 [dependencies]
-rand = "0.8.3"
+

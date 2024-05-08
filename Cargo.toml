@@ -4,6 +4,7 @@ members = [
     "tmp",
     "algorithm",
     "leetcode",
+    "workbench/std-demo",
     "workbench/cargo-demo",
     "workbench/closure-demo",
     "workbench/echo-demo",
