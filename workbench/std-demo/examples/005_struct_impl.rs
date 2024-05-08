@@ -4,6 +4,7 @@ pub trait Converter<T=Self> {
     fn convert(&self) -> (Self::Output, T);
 }
 
+#[allow(dead_code)]
 #[derive(Debug, Copy, Clone)]
 struct MyInt(i32);
 
