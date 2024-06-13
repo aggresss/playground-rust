@@ -38,6 +38,7 @@
 - [The Cargo Book](https://doc.rust-lang.org/cargo/)
 - [Command Line Applications in Rust](https://rust-cli.github.io/book/index.html)
 - [Asynchronous Programming in Rust](https://rust-lang.github.io/async-book/)
+- [Error codes index](https://doc.rust-lang.org/stable/error_codes/)
 
 ### Unofficial
 
