@@ -7,7 +7,7 @@ members = [
     "workbench/std-demo",
     "workbench/cargo-demo",
     "workbench/closure-demo",
-    "workbench/echo-demo",
+    "workbench/cxx-demo",
     "workbench/ffi-demo",
     "workbench/generic-demo",
     "workbench/list",
