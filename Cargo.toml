@@ -9,6 +9,7 @@ members = [
     "workbench/closure-demo",
     "workbench/cxx-demo",
     "workbench/ffi-demo",
+    "workbench/bindgen-demo",
     "workbench/generic-demo",
     "workbench/list",
     "workbench/macro-demo",
